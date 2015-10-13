@@ -1,20 +1,29 @@
-from sys import * 
+import math as m
+
 
 origArr = [5, 3, 17, 10, 84, 19, 6, 22, 9]
 
-class Node(object):
+start = m.floor(len(origArr)/2)-1
+print(start)
 
-    def __init__(self, value):
-        self.value = value
+def left(A,i):
+    return 2*(i+1)-1
 
-    def add_child(self, child):
-        if len(self.get_children) == 0:
-            self.lchild = child
-        elif len(self.get_children) == 1:
-            self.rchild = child
-        else:
-            print "No room to add child"
-            # needs to overflow into next row
-        
+def right(A,i):
+    return 2*(i+1)
 
-    def get_children:
+print(origArr)
+while start >= 0:
+    maxx = []
+    if origArr[left(origArr, start)] > origArr[start]:
+        if origArr[left(origArr, start)] > origArr[right(origArr, start)]:
+            maxx =  origArr[left(origArr, start)]
+            origArr[left(origArr, start)] = origArr[start] 
+            origArr[start] = maxx
+            
+        if origArr[right(origArr, start)] > origArr[start]:
+            maxx =  origArr[right(origArr, start)]
+            origArr[right(origArr, start)] = origArr[start] 
+            origArr[start] = maxx
+        print(origArr)
+    start -= 1
