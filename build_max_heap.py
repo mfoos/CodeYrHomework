@@ -19,6 +19,8 @@ def sortHeapWithRoot(array, root):
     maxx = []
     idx = []
     if array[left(array, root)] > array[root]:
+        if right(array, root) > len(array) - 1:
+            return
         if array[left(array, root)] > array[right(array, root)]:
             maxx = array[left(array, root)]
             idx = left(array, root)
@@ -30,7 +32,7 @@ def sortHeapWithRoot(array, root):
             idx = right(array, root)
             array[right(array, root)] = array[root] 
             array[root] = maxx
-    if left(array, idx) > len(array) - 1:
+    if left(array, idx) > len(array) - 1: 
         return
     sortHeapWithRoot(array, idx)
 
@@ -39,4 +41,4 @@ while start >= 0:
     start -= 1
 
 print(origArr)
-
+# gotta figure out how this scoping works
