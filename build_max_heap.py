@@ -19,20 +19,27 @@ def sortHeapWithRoot(array, root):
     maxx = []
     idx = []
     if array[left(array, root)] > array[root]:
+        # if LC > P
         if right(array, root) > len(array) - 1:
-            return
-        if array[left(array, root)] > array[right(array, root)]:
-            maxx = array[left(array, root)]
+            # if no RC
             idx = left(array, root)
-            array[left(array, root)] = array[root] 
+            maxx = array[idx]
+            array[idx] = array[root] 
             array[root] = maxx
-            
+        if array[left(array, root)] > array[right(array, root)]:
+            # if LC > RC
+            idx = left(array, root)
+            maxx = array[idx]
+            array[idx] = array[root] 
+            array[root] = maxx
         if array[right(array, root)] > array[root]:
-            maxx = array[right(array, root)]
+            # if RC > LC and by extension P
             idx = right(array, root)
-            array[right(array, root)] = array[root] 
+            maxx = array[idx]
+            array[idx] = array[root] 
             array[root] = maxx
     if left(array, idx) > len(array) - 1: 
+        # no children 
         return
     sortHeapWithRoot(array, idx)
 
