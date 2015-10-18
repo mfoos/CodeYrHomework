@@ -16,7 +16,6 @@ def parent(A,i):
 print(origArr)
 
 def sortHeapWithRoot(array, root):
-    print("index-indicated root", root)
     maxx = []
     idx = []
     if array[left(array, root)] > array[root]:
@@ -31,9 +30,7 @@ def sortHeapWithRoot(array, root):
             idx = right(array, root)
             array[right(array, root)] = array[root] 
             array[root] = maxx
-    print("new root:",idx)
     if left(array, idx) > len(array) - 1:
-        print("kill recursion")
         return
     sortHeapWithRoot(array, idx)
 
