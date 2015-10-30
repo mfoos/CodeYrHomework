@@ -5,17 +5,20 @@ origArr = [5, 3, 17, 10, 84, 19, 6, 22, 9]
 start = m.floor(len(origArr)/2)-1
 
 def left(A,i):
-    return 2*(i+1)-1
+    return 2*(i+1) - 1
 
 def right(A,i):
     return 2*(i+1)
 
 def parent(A,i):
-    return m.floor((i+1)/2 - 1)
+    return m.floor((i+1)/2) - 1
 
 print(origArr)
 
 def sortHeapWithRoot(array, root):
+    if left(array, root) > len(array) - 1: 
+        # no children 
+        return
     maxx = []
     idx = []
     if array[left(array, root)] > array[root]:
@@ -32,15 +35,22 @@ def sortHeapWithRoot(array, root):
             maxx = array[idx]
             array[idx] = array[root] 
             array[root] = maxx
-        if array[right(array, root)] > array[root]:
+        if array[right(array, root)] > array[left(array,root)]:
             # if RC > LC and by extension P
             idx = right(array, root)
             maxx = array[idx]
             array[idx] = array[root] 
             array[root] = maxx
-    if left(array, idx) > len(array) - 1: 
-        # no children 
-        return
+    if array[right(array, root)] > array[root]:
+        # if RC > P 
+        idx = right(array, root)
+        maxx = array[idx]
+        array[idx] = array[root] 
+        array[root] = maxx
+    print(array)
+    if not (idx):
+        print("no max, figure it out")
+        # already heap, needs prompt to move to next node
     sortHeapWithRoot(array, idx)
 
 while start >= 0:
