@@ -27,30 +27,25 @@ def sortHeapWithRoot(array, root):
             # if no RC
             idx = left(array, root)
             maxx = array[idx]
-            array[idx] = array[root] 
-            array[root] = maxx
         if array[left(array, root)] > array[right(array, root)]:
             # if LC > RC
             idx = left(array, root)
             maxx = array[idx]
-            array[idx] = array[root] 
-            array[root] = maxx
         if array[right(array, root)] > array[left(array,root)]:
             # if RC > LC and by extension P
             idx = right(array, root)
             maxx = array[idx]
-            array[idx] = array[root] 
-            array[root] = maxx
-    if array[right(array, root)] > array[root]:
+    elif right(array, root) > len(array) - 1:
+        return
+    elif array[right(array, root)] > array[root]:
         # if RC > P 
         idx = right(array, root)
         maxx = array[idx]
-        array[idx] = array[root] 
-        array[root] = maxx
-    print(array)
     if not (idx):
-        print("no max, figure it out")
-        # already heap, needs prompt to move to next node
+        return
+    array[idx] = array[root] 
+    array[root] = maxx
+    print(array)
     sortHeapWithRoot(array, idx)
 
 while start >= 0:
