@@ -27,11 +27,11 @@ def heapify(array):
                 # if no RC
                 idx = left(array, root)
                 maxx = array[idx]
-            if array[left(array, root)] > array[right(array, root)]:
+            elif array[left(array, root)] > array[right(array, root)]:
                 # if LC > RC
                 idx = left(array, root)
                 maxx = array[idx]
-            if array[right(array, root)] > array[left(array,root)]:
+            elif array[right(array, root)] > array[left(array,root)]:
                 # if RC > LC and by extension P
                 idx = right(array, root)
                 maxx = array[idx]
@@ -55,11 +55,13 @@ heapify(origArr)
 print("heap:",origArr)
 soorted = []
 while len(origArr) > 0:
-    soorted.append(origArr.pop(0))
-    origArr.insert(0, origArr.pop(len(origArr)-1))
-    print("swapped:",origArr)
-    heapify(origArr)
-    print(origArr)
-    print("sorted:", soorted)
-print(soorted)
+    if len(origArr) == 1:
+        soorted.append(origArr[0])
+        break 
+    else:
+        soorted.append(origArr.pop(0))
+        origArr.insert(0, origArr.pop(-1))
+        heapify(origArr)
+        print(origArr)
+print("done", soorted)
 # gotta figure out how this scoping works
