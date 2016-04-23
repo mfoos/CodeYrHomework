@@ -26,10 +26,10 @@ def sortHeapWithRoot(array, root):
         if right(array, root) > len(array) - 1:
             # if no RC
             idx = left(array, root)
-        if array[left(array, root)] > array[right(array, root)]:
+        elif array[left(array, root)] > array[right(array, root)]:
             # if LC > RC
             idx = left(array, root)
-        if array[right(array, root)] > array[left(array,root)]:
+        elif array[right(array, root)] > array[left(array,root)]:
             # if RC > LC and by extension P
             idx = right(array, root)
         maxx = array[idx]
