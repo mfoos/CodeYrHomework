@@ -11,7 +11,7 @@ class heapify_test(unittest.TestCase):
         self.assertListEqual([5], heapify([5]))
 
     def test_is_integer_array(self):
-        pass
+        self.assertRaises(TypeError, ["g","a","m","e"])
 
     def test_example1(self):
         self.assertListEqual([84, 22, 19, 10, 3, 17, 6, 5, 9], 
