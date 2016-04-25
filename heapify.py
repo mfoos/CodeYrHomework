@@ -3,6 +3,12 @@ import math as m
 def heapify(origArr):
     start = int(m.floor(len(origArr)/2)-1)
 
+    if start < 1:
+        return origArr
+
+    if not all(isinstance(x, int) for x in origArr):
+        raise TypeError("Input array must be integers")
+
     def left(i):
         return 2*(i+1) - 1
 
